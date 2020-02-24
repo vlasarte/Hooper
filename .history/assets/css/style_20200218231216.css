@@ -90,21 +90,10 @@ header h1 {
     padding: 1%;
 }
 
-button {
-    border-radius: 5px;
-    width: 100%;
-    height: 108px;
-    font-size: 48px;
-}
-
-th {
+th a {
     text-align: center;
     color: black;
     font-weight: bold;
-}
-
-td {
-    text-align: center;
 }
 
 
