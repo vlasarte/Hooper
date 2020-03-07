@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
 
@@ -28,43 +28,44 @@
             <div class="dropdown">
                 <button class="dropbtn">View</button>
                 <div class="dropdown-content">
-                    <a href="viewplayers.html">Players</a>
+                    <a href="view-players.html">Players</a>
                     <a href="#">Teams</a>
                     <a class="dropdown-content-last" href="#">Games</a>
                 </div>
+            </div>
+            <div class="dropdown">
+                <button style="border-radius: 25px;" class="dropbtn">Home</button>
             </div>
         </header>
 
         <div class="body-container">
 
-            <table style="width:100%">
-                <tr>
-                    <th><a href="">Rank</a></th>
-                    <th><a href="">Name</a></th>
-                    <th><a href="">Age</a></th>
-                    <th><a href="">Position</a></th>
-                    <th><a href="">Team</a></th>
-                    <th><a href="">PPG</a></th>
-                    <th><a href="">RPG</a></th>
-                    <th><a href="">APG</a></th>
-                    <th><a href="">SPG</a></th>
-                    <th><a href="">BPG</a></th>
-                    <th><a href="">TPG</a></th>
-                </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>LeBron James</td>
-                    <td>35</td>
-                    <td>SF</td>
-                    <td>LAL</td>
-                    <td>25</td>
-                    <td>9</td>
-                    <td>8</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-            </table>
+            <br><br>
+            
+            <div class="row">
+                <div class="col-6">
+                    <button>Create</button>
+                </div>
+                <div class="col-6">
+                    <button>View</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-4">
+                    <button>Players</button>
+                </div>
+                <div class="col-4">
+                    <button>Teams</button>
+                </div>
+                <div class="col-4">
+                    <button>Games</button>
+                </div>
+
+            </div>
+
+            </div>
 
         </div>
             
@@ -73,6 +74,6 @@
             &copy Copyright
         </footer>
 
-        <script src="assets/js/javascript.js" async defer></script>
+        <script src="../js/javascript.js" async defer></script>
     </body>
 </html>
