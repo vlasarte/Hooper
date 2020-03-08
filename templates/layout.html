@@ -1,17 +1,55 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Flask DB-Beers Example</title>
-    <meta name="description" content="A sample Flask website for db-beers"/>
-    <meta name="keywords" content="flask, db-beers"/>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen"/>
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  </head>
-  <body>
-    <h1><img src="/static/img/beer.jpg" style="float:right"/> Flask <a href="/">DB-Beers Example</a></h1>
-    <hr/>
-    <h2 id="heading">{% block heading %}{% endblock %}</h2>
-    {% block content %}{% endblock %}
-  </body>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hooper</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body>
+
+        <header>
+            <h1>Hooper</h1>
+            <div class="dropdown">
+                <button class="dropbtn">Create</button>
+                <div class="dropdown-content">
+                    <a href="#">Player</a>
+                    <a href="#">Team</a>
+                    <a class="dropdown-content-last" href="#">Game</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">View</button>
+                <div class="dropdown-content">
+                    <a href="view-players">Players</a>
+                    <a href="#">Teams</a>
+                    <a class="dropdown-content-last" href="#">Games</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="/"><button style="border-radius: 25px;" class="dropbtn">Home</button></a>
+            </div>
+        </header>
+
+        <div class="body-container">
+
+            <h2>{% block heading %} {% endblock %}</h2>
+
+            {% block content %} {% endblock %}
+
+        </div>
+
+        <footer>
+            &copy Copyright
+        </footer>
+
+        <script src="../static/js/hooper.js" async defer></script>
+    </body>
 </html>
