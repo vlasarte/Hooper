@@ -2,6 +2,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, IntegerField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
+# class PlayerEditFormFactory:
+#     @staticmethod
+#     def form():
+
 class DrinkerEditFormFactory:
     @staticmethod
     def form(drinker, beers, bars):

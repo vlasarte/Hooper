@@ -90,21 +90,35 @@ header h1 {
     padding: 1%;
 }
 
-button {
+.home-button {
     border-radius: 5px;
     width: 100%;
     height: 108px;
     font-size: 48px;
 }
 
+table {
+    width: 100%;
+}
+
 th {
+    max-width: 50px;
     text-align: center;
     color: black;
     font-weight: bold;
+    border-bottom: solid black 3px;
 }
 
 td {
+    max-width: 50px;
     text-align: center;
+    border: solid black 1px;
+}
+
+td button {
+    border-radius: 10px;
+    width: 16px;
+    height: 16px;
 }
 
 

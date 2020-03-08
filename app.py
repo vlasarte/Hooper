@@ -13,10 +13,27 @@ db = SQLAlchemy(app, session_options={'autocommit': False})
 def index():
     return render_template('index.html')
 
-@app.route('/view-players.html')
+@app.route('/view-players')
 def view_players():
     players = db.session.query(models.Player).all()
     return render_template('view-players.html', players=players)
+
+@app.route('/edit-player/<name>', methods=['GET', 'POST'])
+def edit_player(name):
+    player = db.session.query(models.Player)\
+        .filter(models.Player.name == name).one()
+    form = forms.DrinkerEditFormFactory.form(drinker)
+    if form.validate_on_submit():
+        try:
+            form.errors.pop('database', None)
+            models.Drinker.edit(name, form.name.data, form.address.data,
+                                form.get_beers_liked(), form.get_bars_frequented())
+            return redirect(url_for('drinker', name=form.name.data))
+        except BaseException as e:
+            form.errors['database'] = str(e)
+            return render_template('edit-drinker.html', drinker=drinker, form=form)
+    else:
+        return render_template('edit-drinker.html', drinker=drinker, form=form)
 
 @app.route('/drinker/<name>')
 def drinker(name):
