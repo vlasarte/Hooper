@@ -11,6 +11,15 @@ class Player(db.Model):
     age = db.Column('age', db.Integer)
     position = db.Column('position', db.String(1))
 
+class Game(db.Model):
+    __tablename__ = 'Game'
+    name = db.Column('game_date_est', db.DateTime)
+    team_id = db.Column('team_id', db.Integer, primary_key=True)
+    player_id = db.Column('player_id', db.Integer, primary_key=True)
+    season = db.Column('season', db.Integer, primary_key=True)
+    age = db.Column('age', db.Integer)
+    position = db.Column('position', db.String(1))
+
 
 
 class Drinker(db.Model):
