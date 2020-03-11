@@ -11,14 +11,20 @@ class Player(db.Model):
     age = db.Column('age', db.Integer)
     position = db.Column('position', db.String(1))
 
-class Game(db.Model):
-    __tablename__ = 'Game'
-    name = db.Column('game_date_est', db.DateTime)
+class Performance(db.Model):
+    __tablename__ = 'Performance'
+    game_id = db.Column('game_id', db.Integer, primary_key=True)
     team_id = db.Column('team_id', db.Integer, primary_key=True)
+    team_abbreviation = db.Column('team_abbreviation', db.String(3))
+    team_city = db.Column('team_city', db.String(50))
     player_id = db.Column('player_id', db.Integer, primary_key=True)
-    season = db.Column('season', db.Integer, primary_key=True)
-    age = db.Column('age', db.Integer)
-    position = db.Column('position', db.String(1))
+    player_name = db.Column('player_name', db.String(50))
+    start_position = db.Column('start_position', db.String(1))
+    comment = db.Column('comment', db.String(100))
+    minutes = db.Column('minutes', db.String(5))
+    fgm = db.Column('fgm', db.Integer)
+    fga = db.Column('fga', db.Integer)
+
 
 
 

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block heading %}View Players{% endblock %}
 {% block content %}
-
+<form>
     <table style="width:100%">
 
         <tr>
@@ -15,7 +15,7 @@
         {% for player in  players %}
 
         <tr>
-            <td> <button href="{{url_for('edit_player', name=player.name)}}"></button> </td>
+            <td> <button type="submit" formaction="{{url_for('edit_player', name=player.name)}}">  </button> </td>
             <td>{{ player.name }}</td>
             <td>{{ player.age }}</td>
             <td>{{ player.position }}</td>
@@ -25,5 +25,7 @@
         {% endfor %}
 
     </table>
+
+</form>
 
 {% endblock %}

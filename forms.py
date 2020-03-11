@@ -2,9 +2,16 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, IntegerField, SelectField, SubmitField
 from wtforms.validators import DataRequired
 
-# class PlayerEditFormFactory:
-#     @staticmethod
-#     def form():
+class PlayerEditFormFactory:
+    @staticmethod
+    def form(player):
+        class F(FlaskForm):
+            name = StringField(default=player.name)
+            age = StringField(default=player.age)
+            position = StringField(default=player.position)
+            team = StringField(default=player.team_id)
+        return F()
+
 
 class DrinkerEditFormFactory:
     @staticmethod

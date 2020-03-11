@@ -21,19 +21,19 @@ def view_players():
 @app.route('/edit-player/<name>', methods=['GET', 'POST'])
 def edit_player(name):
     player = db.session.query(models.Player)\
-        .filter(models.Player.name == name).one()
-    form = forms.DrinkerEditFormFactory.form(drinker)
+        .filter(models.Player.name == name)[0]
+    form = forms.PlayerEditFormFactory.form(player)
     if form.validate_on_submit():
         try:
             form.errors.pop('database', None)
-            models.Drinker.edit(name, form.name.data, form.address.data,
-                                form.get_beers_liked(), form.get_bars_frequented())
-            return redirect(url_for('drinker', name=form.name.data))
+            player.age = form.age.data
+            db.session.commit()
+            return redirect(url_for('view_players'))
         except BaseException as e:
             form.errors['database'] = str(e)
-            return render_template('edit-drinker.html', drinker=drinker, form=form)
+            return render_template('edit-player.html', player=player, form=form)
     else:
-        return render_template('edit-drinker.html', drinker=drinker, form=form)
+        return render_template('edit-player.html', player=player, form=form)
 
 @app.route('/drinker/<name>')
 def drinker(name):
