@@ -15,8 +15,29 @@ def index():
 
 @app.route('/view-players')
 def view_players():
-    players = db.session.query(models.Player).all()
-    return render_template('view-players.html', players=players)
+    players = db.session.query(models.Players).all()
+    return render_template('view-all-players.html', entries=players)
+
+@app.route('/view-standings')
+def view_standings():
+    standings = db.session.query(models.Standings).all()
+    return render_template('view-all-standings.html', standings=standings)
+
+@app.route('/view-team/<team_name>')
+def view_teams(team_name):
+    team = db.session.query(models.Teams) \
+        .filter(models.Teams.name == team_name)[0]
+    return render_template('view-all-teams.html', team=team)
+
+@app.route('/view-game')
+def view_games():
+    games = db.session.query(models.Games).all()
+    return render_template('view-all-games.html', entries=games)
+
+@app.route('/view-performance')
+def view_teams():
+    performances = db.session.query(models.Teams).all()
+    return render_template('view-all-performances.html', entries=performances)
 
 @app.route('/edit-player/<name>', methods=['GET', 'POST'])
 def edit_player(name):
