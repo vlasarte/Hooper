@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+{% block heading %}{% endblock %}
+{% block content %}
+
+    <br>
+
+    <div class="row">
+
+        <div class="col-2">
+
+            {% for team in all_teams %}
+
+                <button> {{ team.city }} {{ team.nickname }} </button>
+                <br>
+
+            {% endfor %}
+
+        </div>
+        <div class="col-10">
+            <div class="container">
+                <img class="team-logo" src="../static/img/{{team.nickname}}/logo.png">
+                <div class="team-info">
+                    <div class="row">
+                        <div class="col-8">
+                            <h1 style="float: left;"> {{ team.city }} {{ team.nickname }} </h1>
+                            <h1 style="float: right;"> [ {{ team.abbreviation }} ] </h1>
+                        </div>
+                        <div class="col-4">
+                            <img style="max-height: 50px; float: right;" src="../static/img/logos/nba-logo.png">
+                        </div>
+
+                    </div>
+
+                    <br><br>
+
+                    <div class="row">
+
+                        <div class="col-4">
+
+                            <img style="float: left; width: 130px; height: 160px;" src="../static/img/{{ team.nickname }}/owner.webp">
+                            <h2 style="text-align: left; margin: 0px 140px; font-weight: bold;"> Owner </h2>
+                            <h3 style="text-align: left; margin: 0px 140px;"> {{ team.owner }} </h3>
+
+                        </div>
+                        <div class="col-4">
+                            <img style="float: left;" src="../static/img/{{ team.nickname }}/owner.webp">
+                            <h2 style="text-align: left; margin: 0px 140px; font-weight: bold;"> General Manager </h2>
+                            <h3 style="text-align: left; margin: 0px 140px;"> {{ team.general_manager }} </h3>
+                        </div>
+
+                        <div class="col-4">
+                            <img style="float: left;" src="../static/img/{{ team.nickname }}/owner.webp">
+                            <h2 style="text-align: left; margin: 0px 140px; font-weight: bold;"> Head Coach </h2>
+                            <h3 style="text-align: left; margin: 0px 140px;"> {{ team.head_coach }} </h3>
+                        </div>
+
+                    </div>
+
+                    <br><br>
+
+                     <div class="row">
+                         <div class="col-4">
+
+                         </div>
+                         <div class="col-4">
+
+                         </div>
+                         <div class="col-4">
+
+                            <h2>Roster</h2>
+
+                            <table>
+
+                                <tr>
+                                    <th style="width: 50%">Name</th>
+                                    <th style="width: 25%">Age</th>
+                                    <th style="width: 25%">Position</th>
+
+                                </tr>
+
+                                {% for player in players_on_roster %}
+
+                                    <tr>
+                                        <td>{{ player.name }}</td>
+                                        <td>{{ player.age }}</td>
+                                        <td>{{ player.position }}</td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

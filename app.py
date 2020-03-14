@@ -16,7 +16,7 @@ def index():
 @app.route('/view-players')
 def view_players():
     players = db.session.query(models.Players).all()
-    return render_template('view-all-players.html', entries=players)
+    return render_template('view-all-players.html', players=players)
 
 @app.route('/view-standings')
 def view_standings():
@@ -25,9 +25,17 @@ def view_standings():
 
 @app.route('/view-team/<team_name>')
 def view_teams(team_name):
+    team_name = team_name.capitalize()
+    all_teams = db.session.query(models.Teams)\
+        .order_by(models.Teams.nickname)\
+        .all()
     team = db.session.query(models.Teams) \
-        .filter(models.Teams.name == team_name)[0]
-    return render_template('view-all-teams.html', team=team)
+        .filter(models.Teams.nickname == team_name).first()
+    players_on_roster = db.session.query(models.Players) \
+        .filter(models.Players.team_id == team.team_id)\
+        .filter(models.Players.season == 2019).all()
+
+    return render_template('view-team.html', team=team, all_teams=all_teams, players_on_roster=players_on_roster)
 
 @app.route('/view-game')
 def view_games():
@@ -35,14 +43,14 @@ def view_games():
     return render_template('view-all-games.html', entries=games)
 
 @app.route('/view-performance')
-def view_teams():
+def view_performance():
     performances = db.session.query(models.Teams).all()
     return render_template('view-all-performances.html', entries=performances)
 
 @app.route('/edit-player/<name>', methods=['GET', 'POST'])
 def edit_player(name):
-    player = db.session.query(models.Player)\
-        .filter(models.Player.name == name)[0]
+    player = db.session.query(models.Players)\
+        .filter(models.Players.name == name).first()
     form = forms.PlayerEditFormFactory.form(player)
     if form.validate_on_submit():
         try:
