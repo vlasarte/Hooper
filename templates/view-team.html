@@ -10,7 +10,7 @@
 
             {% for team in all_teams %}
 
-                <button> {{ team.city }} {{ team.nickname }} </button>
+                <a href="{{url_for('view_teams', team_id=team.team_id)}}"><button> {{ team.city }} {{ team.nickname }} </button></a>
                 <br>
 
             {% endfor %}

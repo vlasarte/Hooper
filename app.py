@@ -2,12 +2,12 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 import models
 import forms
+import urllib.parse
 
 app = Flask(__name__)
 app.secret_key = 's3cr3t'
 app.config.from_object('config')
 db = SQLAlchemy(app, session_options={'autocommit': False})
-
 
 @app.route('/')
 def index():
@@ -20,17 +20,30 @@ def view_players():
 
 @app.route('/view-standings')
 def view_standings():
-    standings = db.session.query(models.Standings).all()
-    return render_template('view-all-standings.html', standings=standings)
+    orderedStandings = db.session.query(models.Standings).order_by(models.Standings.standings_date.desc())
+    mostRecentDate = orderedStandings.first().standings_date
+    west_standings = db.session.query(models.Standings)\
+        .filter(models.Standings.conference=="West") \
+        .filter(models.Standings.standings_date == mostRecentDate) \
+        .order_by(models.Standings.w_pct.desc())\
+        .all()
+    east_standings = db.session.query(models.Standings) \
+        .filter(models.Standings.conference == "East") \
+        .filter(models.Standings.standings_date == mostRecentDate) \
+        .order_by(models.Standings.w_pct.desc()) \
+        .all()
+    return render_template('view-standings.html', west_standings=west_standings, east_standings=east_standings)
 
-@app.route('/view-team/<team_name>')
-def view_teams(team_name):
-    team_name = team_name.capitalize()
+@app.route('/view-team/<team_id>')
+def view_teams(team_id):
+    #team_name_decoded = urllib.parse.unquote(team_name)
+    #team_name = team_name.capitalize()
     all_teams = db.session.query(models.Teams)\
         .order_by(models.Teams.nickname)\
         .all()
     team = db.session.query(models.Teams) \
-        .filter(models.Teams.nickname == team_name).first()
+        .filter(models.Teams.team_id == team_id).first()
+
     players_on_roster = db.session.query(models.Players) \
         .filter(models.Players.team_id == team.team_id)\
         .filter(models.Players.season == 2019).all()

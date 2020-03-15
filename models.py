@@ -24,7 +24,7 @@ class Standings(db.Model):
     l = db.Column('l', db.Integer)
     w_pct = db.Column('w_pct', db.Numeric(4, 3))
     home_record = db.Column('home_record', db.String(15))
-    away_record = db.Column('away_record', db.String(15))
+    away_record = db.Column('road_record', db.String(15))
 
 class Teams(db.Model):
     __tablename__ = 'Teams'
