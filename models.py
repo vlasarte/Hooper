@@ -98,16 +98,6 @@ class Performance(db.Model):
     points = db.Column('points', db.Integer)
     plus_minus = db.Column('plus_minus', db.Integer)
 
-
-
-
-
-
-
-
-
-
-
 class Drinker(db.Model):
     __tablename__ = 'drinker'
     name = db.Column('name', db.String(20), primary_key=True)
