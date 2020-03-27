@@ -20,33 +20,26 @@ def view_players():
 
 @app.route('/view-standings')
 def view_standings():
-    orderedStandings = db.session.query(models.Standings).order_by(models.Standings.standings_date.desc())
-    mostRecentDate = orderedStandings.first().standings_date
-    west_standings = db.session.query(models.Standings)\
-        .filter(models.Standings.conference=="West") \
-        .filter(models.Standings.standings_date == mostRecentDate) \
-        .order_by(models.Standings.w_pct.desc())\
+    west_standings = db.session.query(models.Teams)\
+        .filter(models.Teams.conference == "West") \
+        .order_by(models.Teams.w_pct.desc())\
         .all()
-    east_standings = db.session.query(models.Standings) \
-        .filter(models.Standings.conference == "East") \
-        .filter(models.Standings.standings_date == mostRecentDate) \
-        .order_by(models.Standings.w_pct.desc()) \
+    east_standings = db.session.query(models.Teams) \
+        .filter(models.Teams.conference == "East") \
+        .order_by(models.Teams.w_pct.desc()) \
         .all()
     return render_template('view-standings.html', west_standings=west_standings, east_standings=east_standings)
 
 @app.route('/view-team/<team_id>')
 def view_teams(team_id):
-    #team_name_decoded = urllib.parse.unquote(team_name)
-    #team_name = team_name.capitalize()
     all_teams = db.session.query(models.Teams)\
         .order_by(models.Teams.nickname)\
         .all()
     team = db.session.query(models.Teams) \
         .filter(models.Teams.team_id == team_id).first()
-
-    players_on_roster = db.session.query(models.Players) \
-        .filter(models.Players.team_id == team.team_id)\
-        .filter(models.Players.season == 2019).all()
+    players_on_roster = db.session.query(models.Rosters) \
+        .filter(models.Rosters.team_id == team.team_id) \
+        .all()
 
     return render_template('view-team.html', team=team, all_teams=all_teams, players_on_roster=players_on_roster)
 

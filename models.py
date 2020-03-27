@@ -9,7 +9,7 @@ class Players(db.Model):
     position = db.Column('position', db.String(1))
 
 class Rosters(db.Model):
-    __tablename__ = 'player'
+    __tablename__ = 'roster'
     player_id = db.Column('player_id', db.Integer, primary_key=True)
     team_id = db.Column('team_id', db.Integer)
 
@@ -49,7 +49,7 @@ class Teams(db.Model):
     l = db.Column('l', db.Integer)
     w_pct = db.Column('w_pct', db.Numeric(4, 3))
     home_record = db.Column('home_record', db.String(15))
-    away_record = db.Column('road_record', db.String(15))
+    away_record = db.Column('away_record', db.String(15))
 
 class Games(db.Model):
     __tablename__ = 'game'
@@ -59,7 +59,7 @@ class Games(db.Model):
     game_status_text = db.Column('game_status_text', db.Integer)
 
 class Plays(db.Model):
-    __tablename__ = 'game'
+    __tablename__ = 'plays'
     game_id = db.Column('game_id', db.Integer, primary_key=True)
     home_team_id = db.Column('home_team_id', db.Integer)
     visitor_team_id = db.Column('visitor_team_id', db.Integer)
