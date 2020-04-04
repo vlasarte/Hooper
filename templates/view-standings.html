@@ -12,8 +12,8 @@
                     <th>GP</th>
                     <th>Record</th>
                     <th>%</th>
-                    <th>Home Record</th>
-                    <th>Away Record</th>
+<!--                    <th>Home Record</th>-->
+<!--                    <th>Away Record</th>-->
 
                 </tr>
 
@@ -21,12 +21,12 @@
 
                 <tr>
                     <td>{{ loop.index }}</td>
-                    <td><a href="{{url_for('view_teams', team_id=standing.team_id)}}">{{ standing.city }} {{ standing.nickname }}</a></td>
-                    <td>{{ standing.gp }}</td>
+                    <td style="width: 35%"><a href="{{url_for('view_teams', team_id=standing.team_id)}}">{{ standing.city }} {{ standing.nickname }}</a></td>
+                    <td>{{ standing.w + standing.l }}</td>
                     <td>{{ standing.w }} - {{ standing.l }}</td>
                     <td>{{ standing.w_pct }}</td>
-                    <td>{{ standing.home_record }}</td>
-                    <td>{{ standing.away_record }}</td>
+<!--                    <td>{{ standing.home_record }}</td>-->
+<!--                    <td>{{ standing.away_record }}</td>-->
 
                 </tr>
 
@@ -43,8 +43,8 @@
                     <th>GP</th>
                     <th>Record</th>
                     <th>%</th>
-                    <th>Home Record</th>
-                    <th>Away Record</th>
+<!--                    <th>Home Record</th>-->
+<!--                    <th>Away Record</th>-->
 
                 </tr>
 
@@ -52,12 +52,12 @@
 
                 <tr>
                     <td>{{ loop.index }}</td>
-                    <td><a href="{{url_for('view_teams', team_id=standing.team_id)}}">{{ standing.city }} {{ standing.nickname }}</a></td>
-                    <td>{{ standing.gp }}</td>
+                    <td style="width: 35%"><a href="{{url_for('view_teams', team_id=standing.team_id)}}">{{ standing.city }} {{ standing.nickname }}</a></td>
+                    <td>{{ standing.w + standing.l }}</td>
                     <td>{{ standing.w }} - {{ standing.l }}</td>
                     <td>{{ standing.w_pct }}</td>
-                    <td>{{ standing.home_record }}</td>
-                    <td>{{ standing.away_record }}</td>
+<!--                    <td>{{ standing.home_record }}</td>-->
+<!--                    <td>{{ standing.away_record }}</td>-->
 
                 </tr>
 

@@ -13,6 +13,13 @@ class Rosters(db.Model):
     player_id = db.Column('player_id', db.Integer, primary_key=True)
     team_id = db.Column('team_id', db.Integer)
 
+class PlayersRosters(db.Model):
+    __tablename__ = 'playerroster'
+    player_id = db.Column('player_id', db.Integer, primary_key=True)
+    team_id = db.Column('team_id', db.Integer)
+    name = db.Column('name', db.String(100))
+    position = db.Column('position', db.String(1))
+
 # class Standings(db.Model):
 #     __tablename__ = 'Standings'
 #     team_id = db.Column('team_id', db.Integer, primary_key=True)
@@ -44,12 +51,12 @@ class Teams(db.Model):
     head_coach = db.Column('head_coach', db.String(100))
     # g_league_affiliation = db.Column('g_league_affiliation', db.String(100))
     conference = db.Column('conference', db.String(4))
-    gp = db.Column('gp', db.Integer)
     w = db.Column('w', db.Integer)
     l = db.Column('l', db.Integer)
+    gp = w + l
     w_pct = db.Column('w_pct', db.Numeric(4, 3))
-    home_record = db.Column('home_record', db.String(15))
-    away_record = db.Column('away_record', db.String(15))
+    # home_record = db.Column('home_record', db.String(15))
+    # away_record = db.Column('away_record', db.String(15))
 
 class Games(db.Model):
     __tablename__ = 'game'

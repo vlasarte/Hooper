@@ -37,11 +37,9 @@ def view_teams(team_id):
         .all()
     team = db.session.query(models.Teams) \
         .filter(models.Teams.team_id == team_id).first()
-    players_on_roster = db.session.query(models.Rosters, models.Players) \
-        .filter(models.Rosters.team_id == team.team_id)\
-        .filter(models.Rosters.player_id == models.Players.player_id) \
+    players_on_roster = db.session.query(models.PlayersRosters)\
+        .filter(models.PlayersRosters.team_id == team_id)\
         .all()
-
     return render_template('view-team.html', team=team, all_teams=all_teams, players_on_roster=players_on_roster)
 
 @app.route('/view-game')
