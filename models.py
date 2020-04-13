@@ -7,6 +7,17 @@ class Players(db.Model):
     name = db.Column('name', db.String(100))
     player_id = db.Column('player_id', db.Integer, primary_key=True)
     position = db.Column('position', db.String(1))
+    avg_points = db.Column('avg_points', db.Numeric(6, 3))
+    avg_rebounds = db.Column('avg_rebounds', db.Numeric(6, 3))
+    avg_assists = db.Column('avg_assists', db.Numeric(6, 3))
+    avg_steals = db.Column('avg_steals', db.Numeric(6, 3))
+    avg_blocks = db.Column('avg_blocks', db.Numeric(6, 3))
+    avg_turnovers = db.Column('avg_turnovers', db.Numeric(6, 3))
+    avg_fgm = db.Column('avg_fgm', db.Numeric(6, 3))
+    avg_fga = db.Column('avg_fga', db.Numeric(6, 3))
+    avg_ftm = db.Column('avg_ftm', db.Numeric(6, 3))
+    avg_fta = db.Column('avg_fta', db.Numeric(6, 3))
+    eff = db.Column('eff', db.Numeric(6,3))
 
 class Rosters(db.Model):
     __tablename__ = 'roster'
@@ -61,9 +72,15 @@ class Teams(db.Model):
 class Games(db.Model):
     __tablename__ = 'game'
     game_date_est = db.Column('game_date_est', db.Date)
-    game_time = db.Column('time', db.Time)
+    game_time = db.Column('game_time', db.Time)
     game_id = db.Column('game_id', db.Integer, primary_key=True)
     game_status_text = db.Column('game_status_text', db.Integer)
+    home_team_id = db.Column('home_team_id', db.Integer)
+    home_city = db.Column('home_city', db.String(40))
+    home_nickname = db.Column('home_nickname', db.String(40))
+    visitor_team_id = db.Column('visitor_team_id', db.Integer)
+    visitor_city = db.Column('visitor_city', db.String(40))
+    visitor_nickname = db.Column('visitor_nickname', db.String(40))
 
 class Plays(db.Model):
     __tablename__ = 'plays'

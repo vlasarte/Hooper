@@ -6,318 +6,72 @@
 
 
     <div class="row">
-        <div class="col-5">
+        <div class="col-6">
             <h2 style="text-align: center">West Standings</h2>
             <table>
-                <caption style="text-align: center;"> <a href="view-players">View All</a> </caption>
                 <tr>
                     <th>Rank</th>
                     <th>Team</th>
                     <th>Record</th>
                 </tr>
                 <tr>
-                    <td>1</td>
-                    <td>Los Angeles <br> Lakers</td>
-                    <td>42-12</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Portland <br> Trail Blazers</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Damian <br> Lillard</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron <br> James</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion <br> Williamson</td>
-                    <td>23.5</td>
+                    {% for team in west_standings %}
+                        <tr>
+                            <td>{{loop.index}}</th>
+                            <td>{{team.city}} {{team.nickname}}</th>
+                            <td>{{team.w}}-{{team.l}}</th>
+                        </tr>
+                    {% endfor %}
                 </tr>
             </table>
         </div>
-        <div class="col-5">
+        <div class="col-6">
             <h2 style="text-align: center">East Standings</h2>
             <table>
                 <tr>
                     <th>Rank</th>
                     <th>Team</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
+                    <th>Record</th>
                 </tr>
                 <tr>
-                    <td>1</td>
-                    <td>Los Angeles <br> Lakers</td>
-                    <td>42</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka <br> Doncic</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Damian <br> Lillard</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron <br> James</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion <br> Williamson</td>
-                    <td>23.5</td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Points</h2>
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>PPG</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>James <br> Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka <br> Doncic</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Damian <br> Lillard</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron <br> James</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion <br> Williamson</td>
-                    <td>23.5</td>
+                    {% for team in east_standings %}
+                        <tr>
+                            <td>{{loop.index}}</th>
+                            <td>{{team.city}} {{team.nickname}}</th>
+                            <td>{{team.w}}-{{team.l}}</th>
+                        </tr>
+                    {% endfor %}
                 </tr>
             </table>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-10">
-
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Rebounds</h2>
+        <div class="col-6">
+            <h2 style="text-align: center">Player Efficiency Rankings</h2>
             <table>
                 <tr>
                     <th>Rank</th>
                     <th>Player</th>
                     <th>PPG</th>
+                    <th>APG</th>
+                    <th>RPG</th>
+                    <th>EFF</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dame</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion</td>
-                    <td>23.5</td>
-                </tr>
+                {% for player in players %}
+                    <tr>
+                        <td>{{loop.index}}</th>
+                        <td>{{player.name}}</th>
+                        <td>{{player.avg_points}}</th>
+                        <td>{{player.avg_assists}}</th>
+                        <td>{{player.avg_rebounds}}</th>
+                        <td>{{player.eff}}</th>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-10">
-
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Assists</h2>
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>PPG</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dame</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion</td>
-                    <td>23.5</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-10">
-
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Steals</h2>
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>PPG</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dame</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion</td>
-                    <td>23.5</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-10">
-
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Blocks</h2>
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>PPG</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dame</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion</td>
-                    <td>23.5</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-10">
-
-        </div>
-        <div class="col-2">
-            <h2 style="text-align: center">Turnovers</h2>
-            <table>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>PPG</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Harden</td>
-                    <td>35.6</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Luka</td>
-                    <td>31.4</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dame</td>
-                    <td>30.8</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>LeBron</td>
-                    <td>28.5</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Zion</td>
-                    <td>23.5</td>
-                </tr>
-            </table>
+        <div class="col-6">
+            <h2 style="text-align: center">Upcoming Games</h2>
         </div>
     </div>
 

@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-2">
+        {% for itr_player in all_players %}
+            <a href="{{url_for('view_player', player_id=itr_player.player_id)}}"><button> {{ itr_player.name }} </button></a>
+        {% endfor %}
+    </div>
+    <div class="col-10">
+        <h1>{{ player.name }}</h1>
+        <h3>Team: {{player_team.city}} {{player_team.nickname}}</h3>
+        <div class="row">
+            <div class="col-2"><h3>PPG: {{ player.avg_points }}</h3></div>
+            <div class="col-2"><h3>APG: {{ player.avg_assists }}</h3></div>
+            <div class="col-2"><h3>RPG: {{ player.avg_rebounds }}</h3></div>
+        </div>
+        <h3>Performances</h3>
+        <table>
+            <tr>
+                <th>PTS</th>
+                <th>REB</th>
+                <th>ASS</th>
+                <th>MIN</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>TO</th>
+                <th>FGM</th>
+                <th>FGA</th>
+                <th>FGPCT</th>
+                <th>FTM</th>
+                <th>FTA</th>
+                <th>FTPCT</th>
+                <th>+/-</th>
+            </tr>
+            {% for per in player_performances %}
+                <tr>
+                    <td>{{per.points}}</td>
+                    <td>{{per.rebounds}}</td>
+                    <td>{{per.assists}}</td>
+                    <td>{{per.minutes}}</td>
+                    <td>{{per.steals}}</td>
+                    <td>{{per.blocks}}</td>
+                    <td>{{per.turnovers}}</td>
+                    <td>{{per.fgm}}</td>
+                    <td>{{per.fga}}</td>
+                    <td>{{per.fg_pct}}</td>
+                    <td>{{per.ftm}}</td>
+                    <td>{{per.fta}}</td>
+                    <td>{{per.ft_pct}}</td>
+                    <td>{{per.plus_minus}}</td>
+                </tr>        
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
