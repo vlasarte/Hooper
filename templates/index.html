@@ -2,8 +2,6 @@
 {% block heading %}Home Page{% endblock %}
 {% block content %}
 
-<p>This is the home page!</p>
-
 
     <div class="row">
         <div class="col-6">
@@ -18,7 +16,7 @@
                     {% for team in west_standings %}
                         <tr>
                             <td>{{loop.index}}</th>
-                            <td><a href="{{url_for('view_teams', team_id=team.team_id)}}">{{team.city}} {{team.nickname}}</a></th>
+                            <td><a: style="color: black" href="{{url_for('view_teams', team_id=team.team_id)}}">{{team.city}} {{team.nickname}}</a:></th>
                             <td>{{team.w}}-{{team.l}}</th>
                         </tr>
                     {% endfor %}
@@ -37,7 +35,7 @@
                     {% for team in east_standings %}
                         <tr>
                             <td>{{loop.index}}</th>
-                            <td><a href="{{url_for('view_teams', team_id=team.team_id)}}">{{team.city}} {{team.nickname}}</a></th>
+                            <td><a style="color: black" href="{{url_for('view_teams', team_id=team.team_id)}}">{{team.city}} {{team.nickname}}</a></th>
                             <td>{{team.w}}-{{team.l}}</th>
                         </tr>
                     {% endfor %}
